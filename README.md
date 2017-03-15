@@ -1,5 +1,5 @@
 # R-manhattan.plot
-Create a manhattan plot using edgeR, ggplot and ggplotly. 
+Create a nice looking manhattan plot of significantly up- and downregulated genes. 
 
 ```R
 > counts[1:6,1:6]
@@ -61,3 +61,7 @@ The point size correspons to how significant the genes are. In this case we see 
 
 
 The function also creates an interactive html plot (using ggplotly) as well as the output from edgeR. 
+
+Depends: 
+edgeR, ggplot and ggplotly, and
+https://github.com/utnesp/Easy-bioMart
