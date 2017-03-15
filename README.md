@@ -28,14 +28,25 @@ plot.manhattan(counts, clinical.attributes, file.loc = "/Volumes/localdisc/outpu
 ```
 
 We can also specify other options such as:
+
 ```R
-open.pdf = F                        ## will open the manhattan plot after the function has completed 
+open.pdf = T,open.html = T          ## will open the manhattan plot after the function has completed 
 reduce.point.size.by = 2            ## useful when point sizes are to0 big or too low
 highligt.top.genes = T, nr_top_genes = 20, nr_bottom_genes = 20           ## for labelling xx genes of interrest
 which.biotypes = "protein_coding"   ## if interested in comparing only protein_coding genes
 which.biotypes = "protein_coding", inverse.biotypes = F                   ## if interested in only long non-coding RNAs
 reverseGroup = T                    ## if the comparison made by edgeR is not what we wanted, e.g. we would like AMPLIFIED / NON-AMPLIFIED
 instead of NON-AMPLIFIED / AMPLIFIED
+name = ""                           ## if you would like to specify the output names of each file manually. Defaults to column name of clinical attribute
+title.name = ""                     ## Title name in plot. Defaults to column name of clinical attribute
+count.mean.cutoff = 10              ## Cutoff before running edgeR analysis
+logFC.cutoff = 0.8                  ## Cutoff before correcting p values
+Pvalue.cutoff = 0.05                ## Plot only genes that satisfy this criteria
+write.all.genes = T                 ## Wheter to write all genes in edgeR output, or to only write those below Pvalue.cutoff
+dpi = 300, width = 297, height = 210, units = "mm"    ##  pixels, width, height of pdf
+order.by.pvalue = F                 ## order and plot by pvalue rather than FDR
+write.cpm = F                       ## write count matrix to output folder
+
 ```
 
 
@@ -45,4 +56,4 @@ Example showing up- and downregulated genes with FDR < 0.05 in MYCN amplified vs
 The point size correspons to how significant the genes are. In this case we see that MYCN is signifcantly upregulated in the comparison AMPLIFIED vs NON-AMPLFIED tumors. The different point types will also correspond to whether or not the gene of interest is a protein coding gene or not (circle = protein_coding, triangle = non-coding)
 ![alt text](https://github.com/utnesp/R-manhattan.plot/blob/master/MNA.labeled.jpg "Example showing up- and downregulated genes with FDR < 0.05")
 
-The function also creates an interactive html plot (using ggplotly) and the output from edgeR. 
+The function also creates an interactive html plot (using ggplotly) as well as the output from edgeR. 
