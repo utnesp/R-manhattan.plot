@@ -54,6 +54,10 @@ The files created by this function will be saved in the folder specified by you 
 
 Example showing up- and downregulated genes with FDR < 0.05 in MYCN amplified vs MYCN non-amplified samples. 
 The point size correspons to how significant the genes are. In this case we see that MYCN is signifcantly upregulated in the comparison AMPLIFIED vs NON-AMPLFIED tumors. The different point types will also correspond to whether or not the gene of interest is a protein coding gene or not (circle = protein_coding, triangle = non-coding)
+
+
 ![alt text](https://github.com/utnesp/R-manhattan.plot/blob/master/MNA.labeled.jpg "Example showing up- and downregulated genes with FDR < 0.05")
+
+
 
 The function also creates an interactive html plot (using ggplotly) as well as the output from edgeR. 
