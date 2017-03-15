@@ -2,13 +2,14 @@
 Create a manhattan plot using ggplot and ggplotly. 
 
 ```R
-> counts[1:5,1:5]
-                sample_1 sample_2 sample_3 sample_4 sample_5
-ENSG00000227232      109      117       63      179       67
-ENSG00000268903       18        3        4       16        1
-ENSG00000269981       14        1        5       12        1
-ENSG00000279457      463      472      261      247      350
-ENSG00000228463        0       14       12       65       21
+> counts[1:6,1:6]
+                sample_1 sample_2 sample_3 sample_4 sample_5 sample_6
+ENSG00000227232      109      117       63      179       67       81
+ENSG00000268903       18        3        4       16        1       18
+ENSG00000269981       14        1        5       12        1        7
+ENSG00000279457      463      472      261      247      350      475
+ENSG00000228463        0       14       12       65       21        8
+ENSG00000237094      135       47       30       32       47       99
 
 > head(clinical.attributes)
          Eventfree Alive           MNA
@@ -18,15 +19,26 @@ sample_3     EVENT  DEAD     AMPLIFIED
 sample_4     EVENT  DEAD     AMPLIFIED
 sample_5     EVENT  DEAD     AMPLIFIED
 sample_6     EVENT  DEAD     AMPLIFIED
-
-# which.attribute correspons in this case to column named MNA
-# if the points are to big, we can reduce the size using reduce.point.size.by
-# we can use highlight.top.genes to label the most significantly up- and downregulated genes
-# we can specify whether or not to highlight protein_coding genes, or all genes except protein_coding genes
-# the differential expression depends on edgeR. If the comparison set should be reversed, use reverseGroup. Ex. if you would like AMPLIFIED / NON-AMPLIFIED rather than NON-AMPLIFIED / AMPLIFIED
-plot.manhattan(counts, clinical.attributes, file.loc = "/Volumes/localdisc/output.folder/", open.pdf = F, which.attribute = 3, reduce.point.size.by = 2, highligt.top.genes = T, nr_top_genes = 20, nr_bottom_genes = 20, which.biotypes = "protein_coding", inverse.biotypes = F, reverseGroup = T)
-
 ```
+
+If we would like to create a manhattan plot based whether or not the tumor sample is MYCN amplified or not, we would set which.attribute = 3. We also need to specifiy where to save the output with file.loc. The fold change, P and FDR values will be based on the output from edgeR.
+
+```R
+plot.manhattan(counts, clinical.attributes, file.loc = "/Volumes/localdisc/output.folder/")
+```
+
+We can also specify other options such as:
+```R
+open.pdf = F                        ## will open the manhattan plot after the function has completed 
+reduce.point.size.by = 2            ## useful when point sizes are to0 big or too low
+highligt.top.genes = T, nr_top_genes = 20, nr_bottom_genes = 20           ## for labelling xx genes of interrest
+which.biotypes = "protein_coding"   ## if interested in comparing only protein_coding genes
+which.biotypes = "protein_coding", inverse.biotypes = F                   ## if interested in only long non-coding RNAs
+reverseGroup = T                    ## if the comparison made by edgeR is not what we wanted, e.g. we would like AMPLIFIED / NON-AMPLIFIED
+instead of NON-AMPLIFIED / AMPLIFIED
+```
+
+
 The files created by this function will be saved in the folder specified by you in file.loc.
 
 Example showing up- and downregulated genes with FDR < 0.05 in MYCN amplified vs MYCN non-amplified samples. 
