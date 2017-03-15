@@ -6,9 +6,6 @@ plot.manhattan <- function(raw.count.matrix, design, name = "", file.loc = "", t
     print("The design can only have a maximum of two levels")
     print("Any NA attributes will be removed")
     
-    # raw.count.matrix = all.gene.counts.txt.filtered.sorted2; design = t; name = ""; file.loc = "/Volumes/Peter/SRA/manhattan/"; title.name = ""; count.mean.cutoff = 10; logFC.cutoff = 0.8; Pvalue.cutoff = 0.05; write.all.genes = F; reduce.point.size.by = 6; 
-    # dpi = 300; width = 297; height = 210; units = "mm"; which.attribute = 10; open.pdf = F; open.html = F
-    
     if (substr(file.loc, nchar(file.loc), nchar(file.loc)) != "/") {
         file.loc <- paste(file.loc, "/", sep = "")
     }
