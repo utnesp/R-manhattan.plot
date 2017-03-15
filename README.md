@@ -4,6 +4,7 @@ Create a nice looking manhattan plot of significantly up- and downregulated gene
 ## INSTALLATION
 
 ```R
+devtools::install_github("utnesp/Easy-bioMart")
 devtools::install_github("utnesp/R-manhattan.plot")
 ```
 
