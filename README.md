@@ -1,6 +1,14 @@
 # R-manhattan.plot
 Create a nice looking manhattan plot of significantly up- and downregulated genes. 
 
+## INSTALLATION
+
+```R
+devtools::install_github("utnesp/R-manhattan.plot")
+```
+
+## USAGE
+
 ```R
 > counts[1:6,1:6]
                 sample_1 sample_2 sample_3 sample_4 sample_5 sample_6
