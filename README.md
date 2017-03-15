@@ -1,5 +1,5 @@
 # R-manhattan.plot
-Create a manhattan plot using ggplot and ggplotly. 
+Create a manhattan plot using edgeR, ggplot and ggplotly. 
 
 ```R
 > counts[1:6,1:6]
